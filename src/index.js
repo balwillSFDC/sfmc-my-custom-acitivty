@@ -78,7 +78,7 @@ function onInitActivity(payload) {
 
 function prePopulateInput(inputValue) {
   let inputField = document.getElementById('input')
-  inputField.value(inputValue)
+  inputField.value = inputValue
 }
 
 function onDoneButtonClick() {
