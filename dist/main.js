@@ -443,7 +443,7 @@ function onInitActivity(payload) {
   } else {
     inArguments = []
   }
-  
+
   let urlStringObj = inArguments.find((obj) => obj.urlString)
 
   if (urlStringObj) {
@@ -496,7 +496,7 @@ function onFormEntry(e) {
 function setupEventHandlers() {
   // Listen to events on the form
   document.getElementById('done').addEventListener('click', onDoneButtonClick); 
-  document.getElementById('cancel').addEventListener('click', onCancelButtonClick)
+  // document.getElementById('cancel').addEventListener('click', onCancelButtonClick)
   document.getElementById('input').addEventListener('keyup', onFormEntry)
 }
 
