@@ -24,9 +24,10 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'dist')))
 
 
-app.get('/', (req, res) => {
+app.get('/(index)?', (req, res) => {
   return res.sendFile(path.join(__dirname, 'index.html'))
 })
+
 // app.post('/login', routes.login );
 // app.post('/logout', routes.logout );
 
