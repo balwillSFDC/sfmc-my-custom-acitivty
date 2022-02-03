@@ -444,10 +444,10 @@ function onInitActivity(payload) {
     inArguments = []
   }
 
-  let urlString = inArguments.find((argument) => argument.urlString)
+  let urlStringObj = inArguments.find((argument) => argument.urlString)
 
-  if (urlString) {
-    prePopulateInput(urlString)
+  if (urlStringObj) {
+    prePopulateInput(urlStringObj.urlString)
   }
 
 }

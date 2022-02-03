@@ -67,11 +67,11 @@ function onInitActivity(payload) {
   } else {
     inArguments = []
   }
+  
+  let urlStringObj = inArguments.find((obj) => obj.urlString)
 
-  let urlString = inArguments.find((argument) => argument.urlString)
-
-  if (urlString) {
-    prePopulateInput(urlString)
+  if (urlStringObj) {
+    prePopulateInput(urlStringObj.urlString)
   }
 
 }
