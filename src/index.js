@@ -55,14 +55,19 @@ function onInitActivity(payload) {
   activity = payload; 
   console.log(activity)
 
-  const hasInArguments = Boolean(
+  let inArguments; 
+
+  if (
     activity.arguments && 
     activity.arguments.execute && 
     activity.arguments.execute.inArguments &&
     activity.arguments.execute.inArguments.length > 0
-  ); 
+  ) {
+    inArguments = activity.arguments.execute.inArguments
+  } else {
+    inArguments = []
+  }
 
-  const inArguments = hasInArguments ? activity.arguments.execute.inArguments : [];
 }
 
 function onDoneButtonClick() {
@@ -75,7 +80,6 @@ function onDoneButtonClick() {
   activity.arguments.execute.inArguments = [ { urlString } ];
 
   connection.trigger('updateActivity', activity)
-
 
   console.log(`Activity has been updated. Activity: ${JSON.stringify(activity)}`)
 }

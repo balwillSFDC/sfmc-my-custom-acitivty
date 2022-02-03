@@ -90,6 +90,20 @@ app.post('/stop', function(req, res) {
 });
 
 
+/**
+ * Called when a contact is flowing through the Journey.
+ * @return {[type]}
+ * 200 - Processed OK
+ * 3xx - Contact is ejected from the Journey.
+ * 4xx - Contact is ejected from the Journey.
+ * 5xx - Contact is ejected from the Journey.
+ */
+app.post('/execute', (req, res) => {
+  console.log(req)
+  
+})
+
+
 
 
 app.listen(app.get('port'), () => {
