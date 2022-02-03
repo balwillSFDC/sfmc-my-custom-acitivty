@@ -39,6 +39,8 @@ document.addEventListener('DOMContentLoaded', function main() {
   console.log('Triggered onInityActivity()...')
   console.log(`initActivityResults: ${JSON.stringify((initActivityResults))}`)
 
+  connection.on('clickedNext', onDoneButtonClick)
+
   // We're all set! let's signal Journey Builder
   // that we're ready to receive the activity payload...
   // Tell the parent iFrame that we are ready.
@@ -107,14 +109,10 @@ function onCancelButtonClick() {
 // HANDLER TO DISABLE "DONE" BUTTON - SAMPLE BELOW
 function onFormEntry(e) {
   if (e.target.value.length > 0) {
-    document.getElementById('done').removeAttribute('disabled')
-
     // let journey builder know the activity has changes
     connection.trigger('setActivityDirtyState', true);
 
-  } else {
-    document.getElementById('done').setAttribute('disabled', '')
-  }
+  } 
 }
 
 function setupEventHandlers() {
