@@ -68,6 +68,17 @@ function onInitActivity(payload) {
     inArguments = []
   }
 
+  let urlString = inArguments.find((argument) => argument.urlString)
+
+  if (urlString) {
+    prePopulateInput(urlString)
+  }
+
+}
+
+function prePopulateInput(inputValue) {
+  let inputField = document.getElementById('input')
+  inputField.value(inputValue)
 }
 
 function onDoneButtonClick() {
