@@ -443,8 +443,8 @@ function onInitActivity(payload) {
   } else {
     inArguments = []
   }
-
-  let urlStringObj = inArguments.find((argument) => argument.urlString)
+  
+  let urlStringObj = inArguments.find((obj) => obj.urlString)
 
   if (urlStringObj) {
     prePopulateInput(urlStringObj.urlString)
