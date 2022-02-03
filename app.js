@@ -16,7 +16,7 @@ const path        = require('path');
 const request     = require('request');
 
 const app = express();
-const configJSON = require('./dist/config-json');
+const configJSON = require('./config-json');
 
 // Configure Express
 app.set('port', process.env.PORT || 3000);
@@ -31,7 +31,7 @@ app.get('/', (req, res) => {
 // app.post('/logout', routes.logout );
 
 // setup config.json route
-app.get('dist/config.json', function(req, res) {
+app.get('/config.json', function(req, res) {
   // Journey Builder looks for config.json when the canvas loads.
   // We'll dynamically generate the config object with a function
   return res.status(200).json(configJSON(req));
@@ -100,7 +100,7 @@ app.post('/stop', function(req, res) {
  */
 app.post('/execute', (req, res) => {
   console.log(req)
-  
+
 })
 
 
