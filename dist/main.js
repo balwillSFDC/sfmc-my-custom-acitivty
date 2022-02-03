@@ -495,7 +495,7 @@ function onFormEntry(e) {
 
 function setupEventHandlers() {
   // Listen to events on the form
-  document.getElementById('done').addEventListener('click', onDoneButtonClick); 
+  // document.getElementById('done').addEventListener('click', onDoneButtonClick); 
   // document.getElementById('cancel').addEventListener('click', onCancelButtonClick)
   document.getElementById('input').addEventListener('keyup', onFormEntry)
 }
