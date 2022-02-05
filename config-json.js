@@ -10,7 +10,6 @@
 
 
 module.exports = function configJSON(req) {
-  console.log(req)
   return {
     workflowApiVersion: '1.1',
     // metaData points 
