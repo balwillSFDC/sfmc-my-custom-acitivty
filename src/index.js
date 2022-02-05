@@ -74,10 +74,15 @@ function onInitActivity(payload) {
   }
 
   if (payloadStringObj) {
-    prePopulateInput('payload', JSON.stringify(payloadStringObj.payload))
+    prePopulateInput('payload', JSON.stringify(payloadStringObj.payload, null, 4))
   }
 
 }
+
+// function jsFriendlyJSONStringify (s) {
+//   return JSON.stringify(s).replace('\\', '')
+// }
+
 
 function prePopulateInput(inputFieldId, inputValue) {
   let inputField = document.getElementById(inputFieldId)
@@ -179,7 +184,11 @@ function setupExampleTestHarness() {
             activityId: "{{Activity.Id}}",
             contactKey: "{{Context.ContactKey}}",
             execute: {
-                inArguments: [],
+                inArguments: [
+                  // {
+                  //   payload: { foo: "bar"}
+                  // }
+                ],
                 outArguments: []
             },
             startActivityKey: "{{Context.StartActivityKey}}",
