@@ -10,10 +10,8 @@
 
 const express     = require('express');
 const bodyParser  = require('body-parser');
-const errorhandler = require('errorhandler');
-const http        = require('http');
 const path        = require('path');
-const request     = require('request');
+const axios       = require('axios')
 
 const app = express();
 const configJSON = require('./config-json');
@@ -102,9 +100,48 @@ app.post('/stop', function(req, res) {
  * 4xx - Contact is ejected from the Journey.
  * 5xx - Contact is ejected from the Journey.
  */
-app.post('/execute', (req, res) => {
-  console.log(req)
+app.post('/execute', async (req, res) => {
+  try {
+  
+  let inArguments = req.body.arguments.execute.inArguments[0]
 
+  if (Object.keys(inArguments).length > 0) {
+  
+    let reqOptions; 
+
+    if (inArguments.payload) {
+      reqOptions = {
+        method: 'POST',
+        url: inArguments.urlString,
+        data: JSON.stringify(inArguments.payload)
+      }
+    } else {
+      reqOptions = {
+        method: 'POST',
+        url: inArguments.urlString,
+      }
+    }
+    
+    const response = await axios(reqOptions)
+
+    console.log(response)
+
+  } else {
+    return res.status(500).json({
+      error: 'error: req.body.urlString did not exist'
+    })
+  }
+  
+
+  return res.status(200).json({
+    result: 'good news, the post message was sent!'
+  })
+
+  } catch(e) {
+    return res.status(500).json({
+      error: 'Something went wrong...'
+    })
+  }
 })
 
 

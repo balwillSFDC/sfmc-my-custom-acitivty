@@ -24,8 +24,7 @@ let activity = {};
 // Wait for the document to load before we do anything
 document.addEventListener('DOMContentLoaded', function main() {
   // setup our ui event handlers
-  setupEventHandlers();
-  console.log('Event handlers have been set...')
+  document.getElementById('url').addEventListener('keyup', onFormEntry)
 
   if (isDev) {
     console.log("DEV MODE ENABLED - TRIGGERING MOCK JB -> CUSTOM ACTIVITY SIGNAL")
@@ -35,10 +34,7 @@ document.addEventListener('DOMContentLoaded', function main() {
 
   // Bind the initActivity event...
   // Journey Builder will respond with 'initActivity' after it receives the "ready" signal
-  let initActivityResults = connection.on('initActivity', onInitActivity);
-  console.log('Triggered onInityActivity()...')
-  console.log(`initActivityResults: ${JSON.stringify((initActivityResults))}`)
-
+  connection.on('initActivity', onInitActivity);
   connection.on('clickedNext', onDoneButtonClick)
 
   // We're all set! let's signal Journey Builder
@@ -79,22 +75,37 @@ function onInitActivity(payload) {
 }
 
 function prePopulateInput(inputValue) {
-  let inputField = document.getElementById('input')
+  let inputField = document.getElementById('url')
   inputField.value = inputValue
 }
 
 function onDoneButtonClick() {
   // we must set metaData.isConfigured in order to tell JB that this activity
   // is ready for activation
-  activity.metaData.isConfigured = true; 
+  urlString = document.getElementById('url').value
+  
+  if (urlString.length > 0) {
+    activity.metaData.isConfigured = true; 
 
-  urlString = document.getElementById('input').value
+    payload = document.getElementById('payload').value
 
-  activity.arguments.execute.inArguments = [ { urlString } ];
+    if (payload) {
+      payloadTest = Boolean(JSON.parse(payload))
+      
+      console.log(payloadTest)
 
-  connection.trigger('updateActivity', activity)
+      activity.arguments.execute.inArguments = [ {urlString, payload } ]  
+    } else {
+      activity.arguments.execute.inArguments = [ {urlString} ] 
+    }
+    
+    connection.trigger('updateActivity', activity)
 
-  console.log(`Activity has been updated. Activity: ${JSON.stringify(activity)}`)
+    console.log(`Activity has been updated. Activity: ${JSON.stringify(activity)}`)
+  } else {
+    document.getElementById('url-field').classList.add('slds-has-error')
+    document.getElementById('form-error-url').style.display = null
+  }
 }
 
 function onCancelButtonClick() {
@@ -113,13 +124,6 @@ function onFormEntry(e) {
     connection.trigger('setActivityDirtyState', true);
 
   } 
-}
-
-function setupEventHandlers() {
-  // Listen to events on the form
-  // document.getElementById('done').addEventListener('click', onDoneButtonClick); 
-  // document.getElementById('cancel').addEventListener('click', onCancelButtonClick)
-  document.getElementById('input').addEventListener('keyup', onFormEntry)
 }
 
 
@@ -149,26 +153,30 @@ function setupExampleTestHarness() {
       console.log('\tuse jb.ready() from the console to initialize your activity')
   });
 
+  jb.save = () => {
+    onDoneButtonClick()
+  }
+
   // fire the ready signal with an example activity
-  jb.ready = function() {
+  jb.ready = () => {
       jbSession.trigger('initActivity', {
-          name: '',
-          key: 'EXAMPLE-1',
-          metaData: {},
-          configurationArguments: {},
-          arguments: {
-              executionMode: "{{Context.ExecutionMode}}",
-              definitionId: "{{Context.DefinitionId}}",
-              activityId: "{{Activity.Id}}",
-              contactKey: "{{Context.ContactKey}}",
-              execute: {
-                  inArguments: [],
-                  outArguments: []
-              },
-              startActivityKey: "{{Context.StartActivityKey}}",
-              definitionInstanceId: "{{Context.DefinitionInstanceId}}",
-              requestObjectId: "{{Context.RequestObjectId}}"
-          }
+        name: '',
+        key: 'EXAMPLE-1',
+        metaData: {},
+        configurationArguments: {},
+        arguments: {
+            executionMode: "{{Context.ExecutionMode}}",
+            definitionId: "{{Context.DefinitionId}}",
+            activityId: "{{Activity.Id}}",
+            contactKey: "{{Context.ContactKey}}",
+            execute: {
+                inArguments: [],
+                outArguments: []
+            },
+            startActivityKey: "{{Context.StartActivityKey}}",
+            definitionInstanceId: "{{Context.DefinitionInstanceId}}",
+            requestObjectId: "{{Context.RequestObjectId}}"
+        }
       });
   };
 }

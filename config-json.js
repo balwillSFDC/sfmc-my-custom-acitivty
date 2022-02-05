@@ -80,6 +80,12 @@ module.exports = function configJSON(req) {
                   isNullable: 'False',
                   direction: 'out',
                   access: 'visible'
+                },
+                payload: {
+                  dataType: 'Text',
+                  isNullable: 'True',
+                  direction: 'out',
+                  access: 'visible'
                 }
               }
             ],
