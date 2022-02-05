@@ -450,7 +450,7 @@ function onInitActivity(payload) {
   }
 
   if (payloadStringObj) {
-    prePopulateInput('payload', payloadStringObj.payload)
+    prePopulateInput('payload', JSON.stringify(payloadStringObj.payload))
   }
 
 }
