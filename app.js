@@ -124,7 +124,8 @@ app.post('/execute', async (req, res) => {
     
     const response = await axios(reqOptions)
 
-    console.log(response)
+    console.log('response from url post: ')
+    console.log(`response.status: ${response.status}`)
 
   } else {
     return res.status(500).json({

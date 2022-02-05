@@ -463,11 +463,11 @@ function onDoneButtonClick() {
   if (urlString.length > 0) {
     activity.metaData.isConfigured = true; 
 
-    payload = document.getElementById('payload').value
+    payloadValue = document.getElementById('payload').value
 
-    if (payload) {
+    if (payloadValue) {
       try {
-        JSON.parse(payload)
+        payload = JSON.parse(payloadValue)
       } catch {
         document.getElementById('payload-field').classList.add('slds-has-error')
         document.getElementById('form-error-payload').style.display = null
