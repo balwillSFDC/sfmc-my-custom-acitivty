@@ -474,8 +474,6 @@ function onDoneButtonClick() {
 
       }
       
-      console.log(payloadTest)
-
       activity.arguments.execute.inArguments = [ {urlString, payload } ]  
     } else {
       activity.arguments.execute.inArguments = [ {urlString} ] 
