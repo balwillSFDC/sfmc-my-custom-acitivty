@@ -67,15 +67,20 @@ function onInitActivity(payload) {
   }
 
   let urlStringObj = inArguments.find((obj) => obj.urlString)
+  let payloadStringObj = inArguments.find((obj) => obj.payload)
 
   if (urlStringObj) {
-    prePopulateInput(urlStringObj.urlString)
+    prePopulateInput('url', urlStringObj.urlString)
+  }
+
+  if (payloadStringObj) {
+    prePopulateInput('payload', payloadStringObj.payload)
   }
 
 }
 
-function prePopulateInput(inputValue) {
-  let inputField = document.getElementById('url')
+function prePopulateInput(inputFieldId, inputValue) {
+  let inputField = document.getElementById(inputFieldId)
   inputField.value = inputValue
 }
 
@@ -104,8 +109,8 @@ function onDoneButtonClick() {
     }
     
     connection.trigger('updateActivity', activity)
-
     console.log(`Activity has been updated. Activity: ${JSON.stringify(activity)}`)
+
   } else {
     document.getElementById('url-field').classList.add('slds-has-error')
     document.getElementById('form-error-url').style.display = null
