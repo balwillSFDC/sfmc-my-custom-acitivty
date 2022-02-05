@@ -19,11 +19,12 @@
         </div>
         <div class="slds-form-element__help" id="form-error-url" style="display: none;" >Enter a url to make a request to</div>
     </div>
-    <div class="slds-form-element slds-form-element_stacked">
+    <div class="slds-form-element slds-form-element_stacked" id='payload-field'>
       <label class="slds-form-element__label" for="payload"> Payload</label>
       <div class="slds-form-element__control">
         <textarea style="height: 400px;" id="payload" placeholder='{ &#10;   "foo":"bar"  &#10;}' class="slds-textarea"></textarea>
       </div>
+      <div class="slds-form-element__help" id="form-error-payload" style="display: none;" >Payload does not follow correct JSON syntax</div>
     </div>
 </div>
 <div id="discount-code-output" class="slds-text-heading_small"></div>

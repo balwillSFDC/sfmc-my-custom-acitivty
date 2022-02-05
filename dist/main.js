@@ -466,7 +466,13 @@ function onDoneButtonClick() {
     payload = document.getElementById('payload').value
 
     if (payload) {
-      payloadTest = Boolean(JSON.parse(payload))
+      try {
+        JSON.parse(payload)
+      } catch {
+        document.getElementById('payload-field').classList.add('slds-has-error')
+        document.getElementById('form-error-payload').style.display = null
+
+      }
       
       console.log(payloadTest)
 
