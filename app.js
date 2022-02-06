@@ -49,7 +49,7 @@ app.get('/config.json', function(req, res) {
  */
 app.post('/save', function(req, res) {
   console.log('debug: /save');
-  return res.status(200, 'Save');
+  return res.status(200).json({});
 });
 
 /**
@@ -64,7 +64,7 @@ app.post('/save', function(req, res) {
  */
 app.post('/publish', function(req, res) {
   console.log('debug: /publish');
-  return res.status(200, 'Publish');
+  return res.status(200).json({});
 });
 
 
@@ -79,7 +79,7 @@ app.post('/publish', function(req, res) {
  */
 app.post('/validate', function(req, res) {
   console.log('debug: /validate');
-  return res.status(200, 'Validate');
+  return res.status(200).json({});
 });
 
 /**
@@ -88,7 +88,7 @@ app.post('/validate', function(req, res) {
  */
 app.post('/stop', function(req, res) {
   console.log('debug: /stop');
-  return res.status(200, 'Stop');
+  return res.status(200).json({});
 });
 
 
@@ -134,7 +134,9 @@ app.post('/execute', async (req, res) => {
   }
   
 
-  return res.status(200, 'Execute')
+  return res.status(200).json({
+    result: 'good news, the post message was sent!'
+  })
 
   } catch(e) {
     return res.status(500).json({
