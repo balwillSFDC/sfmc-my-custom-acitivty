@@ -103,44 +103,54 @@ app.post('/stop', function(req, res) {
 app.post('/execute', async (req, res) => {
   try {
   
-  let inArguments = req.body.arguments.execute.inArguments[0]
+    let inArguments = req.body.arguments.execute.inArguments[0]
 
-  if (Object.keys(inArguments).length > 0) {
-  
-    let reqOptions; 
+    if (Object.keys(inArguments).length > 0) {
+    
+      let reqOptions; 
 
-    if (inArguments.payload) {
-      reqOptions = {
-        method: 'POST',
-        url: inArguments.urlString,
-        data: JSON.stringify(inArguments.payload)
+      if (inArguments.payload) {
+        reqOptions = {
+          method: 'POST',
+          url: inArguments.urlString,
+          data: JSON.stringify(inArguments.payload)
+        }
+      } else {
+        reqOptions = {
+          method: 'POST',
+          url: inArguments.urlString,
+        }
       }
+      
+      const response = await axios(reqOptions)
+
+      console.log('response from url post: ')
+      console.log(`response.status: ${response.status}`)
+
     } else {
-      reqOptions = {
-        method: 'POST',
-        url: inArguments.urlString,
-      }
+      return res.status(500).json({
+        error: 'error: req.body.urlString did not exist'
+      })
     }
     
-    const response = await axios(reqOptions)
 
-    console.log('response from url post: ')
-    console.log(`response.status: ${response.status}`)
-
-  } else {
-    return res.status(500).json({
-      error: 'error: req.body.urlString did not exist'
+    return res.status(200).json({
+      result: 'good news, the post message was sent!'
     })
-  }
-  
-
-  return res.status(200).json({
-    result: 'good news, the post message was sent!'
-  })
 
   } catch(e) {
+    let inArguments = req.body.arguments.execute.inArguments[0]
+
+    if (inArguments.urlString) {
+      const response = await axios({
+        method: 'POST',
+        url: inArguments.urlString,
+        data: e
+      })
+    }
     return res.status(500).json({
-      error: 'Something went wrong...'
+      error: 'Something went wrong...',
+      message: e
     })
   }
 })
