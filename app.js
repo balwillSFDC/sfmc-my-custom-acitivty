@@ -104,9 +104,8 @@ app.post('/execute', async (req, res) => {
   try {
   
     console.log(req.body)
-    let inArguments = req.body.inArguments[0]
 
-    if (Object.keys(inArguments).length > 0) {
+    if (Object.keys(req.body.inArguments[0]).length > 0) {
     
       let reqOptions; 
 
@@ -140,15 +139,7 @@ app.post('/execute', async (req, res) => {
     })
 
   } catch(e) {
-    let inArguments = req.body.arguments.execute.inArguments[0]
 
-    if (inArguments.urlString) {
-      const response = await axios({
-        method: 'POST',
-        url: inArguments.urlString,
-        data: e
-      })
-    }
     return res.status(500).json({
       error: 'Something went wrong...',
       message: e
