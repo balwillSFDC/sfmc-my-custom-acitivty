@@ -46,28 +46,13 @@ module.exports = function configJSON(req) {
     },
     configurationArguments: {
       save: {
-        url: `https://${req.headers.host}/save`,
-        verb: 'POST',
-        body: "",
-        format: "json",
-        useJwt: false,
-        timeout: 2000
+        url: `https://${req.headers.host}/save`
       },
       publish: {
-        url: `https://${req.headers.host}/publish`,
-        verb: 'POST',
-        body: "",
-        format: "json",
-        useJwt: false,
-        timeout: 2000
+        url: `https://${req.headers.host}/publish`
       },
       validate: {
-        url: `https://${req.headers.host}/validate`,
-        verb: 'POST',
-        body: "",
-        format: "json",
-        useJwt: false,
-        timeout: 2000
+        url: `https://${req.headers.host}/validate`
       },
       stop: {
         url: `https://${req.headers.host}/stop`
