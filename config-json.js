@@ -55,6 +55,13 @@ module.exports = function configJSON(req) {
         url: `https://${req.headers.host}/stop`
       }
     },
+    "userInterfaces": {
+      "configModal": {
+        "height": 200,
+        "width": 300,
+        "fullscreen": true
+      }
+    },
     // userInterfaces: {
     //   configurationSupportsReadOnlyMode: true,
     //   configInspector: {
