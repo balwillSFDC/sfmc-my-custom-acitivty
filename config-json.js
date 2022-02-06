@@ -45,15 +45,39 @@ module.exports = function configJSON(req) {
       },
     },
     configurationArguments: {
-      publish: `https://${req.headers.host}/publish`,
-      validate: `https://${req.headers.host}/validate`,
-      stop: `https://${req.headers.host}/stop`
+      save: {
+        url: `https://${req.headers.host}/save`,
+        verb: 'POST',
+        body: "",
+        format: "json",
+        useJwt: false,
+        timeout: 2000
+      },
+      publish: {
+        url: `https://${req.headers.host}/publish`,
+        verb: 'POST',
+        body: "",
+        format: "json",
+        useJwt: false,
+        timeout: 2000
+      },
+      validate: {
+        url: `https://${req.headers.host}/validate`,
+        verb: 'POST',
+        body: "",
+        format: "json",
+        useJwt: false,
+        timeout: 2000
+      },
+      stop: {
+        url: `https://${req.headers.host}/stop`
+      }
     },
     "userInterfaces": {
       "configModal": {
         "height": 200,
         "width": 300,
-        "fullscreen": false
+        "fullscreen": true
       }
     },
     // schema Object mirrors the activity configuration from the top level of the config.json file and specifies schema information about in and out arguments. Schema objects follow this pattern: 
