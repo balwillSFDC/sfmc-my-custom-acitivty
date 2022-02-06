@@ -43,53 +43,53 @@ module.exports = function configJSON(req) {
         concurrentRequests: 5,
         url:`https://${req.headers.host}/execute`,
       },
-      configurationArguments: {
-        publish: {
-          url: `https://${req.headers.host}/publish`
-        },
-        validate: {
-          url: `https://${req.headers.host}/validate`
-        },
-        stop: {
-          url: `https://${req.headers.host}/stop`
-        }
+    },
+    configurationArguments: {
+      publish: {
+        url: `https://${req.headers.host}/publish`
       },
-      userInterfaces: {
-        configurationSupportsReadOnlyMode: true,
-        configInspector: {
-          size: 'scm-lg',
-          emptyIframe: true
-        }
+      validate: {
+        url: `https://${req.headers.host}/validate`
       },
-      // schema Object mirrors the activity configuration from the top level of the config.json file and specifies schema information about in and out arguments. Schema objects follow this pattern: 
-      // ** 
-      // {
-      //    dataType: MC Data Type,
-      //    isNullable: boolean,
-      //    direction: "in" or "out",
-      //    access: "visible" or "hidden"
-      // }
-      schema: {
-        arguments: {
-          execute: {
-            inArguments: [
-              { 
-                urlString: {
-                  dataType: 'Text',
-                  isNullable: 'False',
-                  direction: 'out',
-                  access: 'visible'
-                },
-                payload: {
-                  dataType: 'Text',
-                  isNullable: 'True',
-                  direction: 'out',
-                  access: 'visible'
-                }
+      stop: {
+        url: `https://${req.headers.host}/stop`
+      }
+    },
+    userInterfaces: {
+      configurationSupportsReadOnlyMode: true,
+      configInspector: {
+        size: 'scm-lg',
+        emptyIframe: true
+      }
+    },
+    // schema Object mirrors the activity configuration from the top level of the config.json file and specifies schema information about in and out arguments. Schema objects follow this pattern: 
+    // ** 
+    // {
+    //    dataType: MC Data Type,
+    //    isNullable: boolean,
+    //    direction: "in" or "out",
+    //    access: "visible" or "hidden"
+    // }
+    schema: {
+      arguments: {
+        execute: {
+          inArguments: [
+            { 
+              urlString: {
+                dataType: 'Text',
+                isNullable: 'False',
+                direction: 'out',
+                access: 'visible'
+              },
+              payload: {
+                dataType: 'Text',
+                isNullable: 'True',
+                direction: 'out',
+                access: 'visible'
               }
-            ],
-            outArguments: []
-          }
+            }
+          ],
+          outArguments: []
         }
       }
     }
