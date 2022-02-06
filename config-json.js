@@ -44,17 +44,17 @@ module.exports = function configJSON(req) {
         url:`https://${req.headers.host}/execute`,
       },
     },
-    configurationArguments: {
-      publish: {
-        url: `https://${req.headers.host}/publish`
-      },
-      validate: {
-        url: `https://${req.headers.host}/validate`
-      },
-      stop: {
-        url: `https://${req.headers.host}/stop`
-      }
-    },
+    // configurationArguments: {
+    //   publish: {
+    //     url: `https://${req.headers.host}/publish`
+    //   },
+    //   validate: {
+    //     url: `https://${req.headers.host}/validate`
+    //   },
+    //   stop: {
+    //     url: `https://${req.headers.host}/stop`
+    //   }
+    // },
     userInterfaces: {
       configurationSupportsReadOnlyMode: true,
       configInspector: {
