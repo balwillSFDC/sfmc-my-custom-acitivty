@@ -104,7 +104,7 @@ app.post('/execute', async (req, res) => {
   try {
   
     console.log(req.body)
-    let inArguments = req.body.arguments.execute.inArguments[0]
+    let inArguments = req.body.inArguments[0]
 
     if (Object.keys(inArguments).length > 0) {
     
