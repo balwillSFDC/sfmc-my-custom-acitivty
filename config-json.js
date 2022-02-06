@@ -73,13 +73,6 @@ module.exports = function configJSON(req) {
         url: `https://${req.headers.host}/stop`
       }
     },
-    "userInterfaces": {
-      "configModal": {
-        "height": 200,
-        "width": 300,
-        "fullscreen": true
-      }
-    },
     // schema Object mirrors the activity configuration from the top level of the config.json file and specifies schema information about in and out arguments. Schema objects follow this pattern: 
     // ** 
     // {
