@@ -19,7 +19,7 @@ const configJSON = require('./config-json');
 let logger = (item) => {
   const debug = true
   if (debug) {
-    return console.log(item)
+    console.log(item)
   }
 }
 
