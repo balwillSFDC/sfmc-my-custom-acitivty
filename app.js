@@ -143,7 +143,7 @@ app.post('/execute', async (req, res) => {
       payload.eventDate = eventDate
 
       
-      if (urlString && payload) {
+      if (urlString && Object.keys(payload).length > 0) {
         reqOptions = {
           method: 'POST',
           url: urlString,
