@@ -133,8 +133,15 @@ app.post('/execute', async (req, res) => {
 
     if (Object.keys(req.body.inArguments[0]).length > 0) {
       let reqOptions; 
+      let contactKey = req.body.keyValue
       let urlString = req.body.inArguments[0].urlString || ''
       let payload = req.body.inArguments[0].payload || {}
+      let eventDate = new Date().format('m-d-Y h:i:s'); 
+
+      // add contactKey, eventDate to payload
+      payload.contactKey = contactKey
+      payload.eventDate = eventDate
+
       
       if (urlString && payload) {
         reqOptions = {
@@ -150,29 +157,26 @@ app.post('/execute', async (req, res) => {
       }
 
       logger(reqOptions)
-      
-      axios(reqOptions)
+
+      // not going to bother using 'await'...will slow down code waiting for response
+      axios(reqOptions) 
     } else {
       return res.status(500).json({
-        error: 'error: req.body.urlString did not exist'
+        errorMessage: 'req.body.urlString did not exist'
       })
     }
     
 
     return res.status(200).json({
-      result: 'good news, the post message was sent!'
+      // TODO: RETURN MESSAGE ACCORDING TO DOCUMENTATION
+      // https://developer.salesforce.com/docs/marketing/marketing-cloud/guide/transaction-key.html
     })
 
-  } catch(e) {
+  } catch(errorMessage) {
 
-    return res.status(500).json({
-      error: 'Something went wrong...',
-      message: e
-    })
+    return res.status(500).json({ errorMessage })
   }
 })
-
-
 
 
 app.listen(app.get('port'), () => {
