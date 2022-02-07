@@ -125,7 +125,7 @@ app.post('/execute', async (req, res) => {
     console.log(req.body)
 
     if (Object.keys(req.body.inArguments[0]).length > 0) {
-    
+      console.log('sending request to url...')
       let reqOptions; 
 
       if (inArguments.payload) {
