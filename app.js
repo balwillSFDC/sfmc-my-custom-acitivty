@@ -100,6 +100,25 @@ app.post('/stop', function(req, res) {
  * 4xx - Contact is ejected from the Journey.
  * 5xx - Contact is ejected from the Journey.
  */
+// REQ.BODY SAMPLE
+// {
+//   inArguments: [
+//     {
+//       urlString: 'https://hookb.in/je03KVrj9gi9dlMMdxMM',
+//       payload: [Object]
+//     }
+//   ],
+//   outArguments: [],
+//   activityObjectID: '9841db2b-a598-4b3a-b1af-0dd71cd8939a',
+//   journeyId: 'b544882d-4160-4114-a419-7ff43e776b47',
+//   activityId: '9841db2b-a598-4b3a-b1af-0dd71cd8939a',
+//   definitionInstanceId: '4f60d95d-663e-468d-896a-d85c73a46f4a',
+//   activityInstanceId: '394345a0-38f5-4b1b-9223-a271e6046f7f',
+//   keyValue: '00Q4S000002CsSdUAK_v2',
+//   mode: 0
+// }
+
+
 app.post('/execute', async (req, res) => {
   try {
   
@@ -122,11 +141,7 @@ app.post('/execute', async (req, res) => {
         }
       }
       
-      const response = await axios(reqOptions)
-
-      console.log('response from url post: ')
-      console.log(`response.status: ${response.status}`)
-
+      axios(reqOptions)
     } else {
       return res.status(500).json({
         error: 'error: req.body.urlString did not exist'
