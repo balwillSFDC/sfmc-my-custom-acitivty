@@ -16,6 +16,13 @@ const axios       = require('axios')
 const app = express();
 const configJSON = require('./config-json');
 
+let logger = (item) => {
+  const debug = true
+  if (debug) {
+    return console.log(item)
+  }
+}
+
 // Configure Express
 app.set('port', process.env.PORT || 3000);
 app.use(bodyParser.json()); 
@@ -122,24 +129,27 @@ app.post('/stop', function(req, res) {
 app.post('/execute', async (req, res) => {
   try {
   
-    console.log(req.body)
+    logger(req.body)
 
     if (Object.keys(req.body.inArguments[0]).length > 0) {
-      console.log('sending request to url...')
       let reqOptions; 
-
-      if (inArguments.payload) {
+      let urlString = req.body.inArguments[0].urlString || ''
+      let payload = req.body.inArguments[0].payload || {}
+      
+      if (urlString && payload) {
         reqOptions = {
           method: 'POST',
-          url: inArguments.urlString,
-          data: JSON.stringify(inArguments.payload)
+          url: urlString,
+          data: JSON.stringify(payload)
         }
       } else {
         reqOptions = {
           method: 'POST',
-          url: inArguments.urlString,
+          url: urlString,
         }
       }
+
+      logger(reqOptions)
       
       axios(reqOptions)
     } else {
