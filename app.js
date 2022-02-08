@@ -136,8 +136,8 @@ app.post('/execute', async (req, res) => {
       console.log('preparing paylod...making request to url...')
       let reqOptions; 
       let contactKey = req.body.keyValue
-      let urlString = req.body.inArguments[0].urlString || ''
-      let payload = req.body.inArguments[0].payload || {}
+      let urlString = req.body.inArguments[0].urlString
+      let payload = req.body.inArguments[0].payload
       let eventDate = new Date().format('m-d-Y h:i:s'); 
 
       // add contactKey, eventDate to payload
