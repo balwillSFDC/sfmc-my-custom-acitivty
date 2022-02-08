@@ -139,13 +139,9 @@ app.post('/execute', async (req, res) => {
       let urlString = req.body.inArguments[0].urlString
       let payload = req.body.inArguments[0].payload
 
-      logger('urlString: ', urlString)
-      logger('payload: ', payload)
-
       // add contactKey, eventDate to payload
-      // payload.contactKey = contactKey
-      // payload.eventDate = eventDate
-      
+      payload.contactKey = contactKey
+            
       if (urlString && Object.keys(payload).length > 0) {
         reqOptions = {
           method: 'POST',
