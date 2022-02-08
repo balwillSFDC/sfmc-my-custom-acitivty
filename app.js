@@ -133,17 +133,18 @@ app.post('/execute', async (req, res) => {
     logger('req.body', req.body)
 
     if (Object.keys(req.body.inArguments[0]).length > 0) {
-      console.log('preparing paylod...making request to url...')
+      console.log('preparing payload...making request to url...')
       let reqOptions; 
       let contactKey = req.body.keyValue
       let urlString = req.body.inArguments[0].urlString
       let payload = req.body.inArguments[0].payload
-      let eventDate = new Date().format('m-d-Y h:i:s'); 
+
+      logger('urlString: ', urlString)
+      logger('payload: ', payload)
 
       // add contactKey, eventDate to payload
       // payload.contactKey = contactKey
       // payload.eventDate = eventDate
-      console.log(payload)
       
       if (urlString && Object.keys(payload).length > 0) {
         reqOptions = {
@@ -157,7 +158,7 @@ app.post('/execute', async (req, res) => {
           url: urlString,
         }
       }
-
+      logger('reqOptions: ', reqOptions)
       // not going to bother using 'await'...will slow down code waiting for response
       let response = await axios(reqOptions) 
     } else {
