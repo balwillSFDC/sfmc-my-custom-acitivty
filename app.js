@@ -16,9 +16,10 @@ const axios       = require('axios')
 const app = express();
 const configJSON = require('./config-json');
 
-let logger = (item) => {
+let logger = (label, item) => {
   const debug = true
   if (debug) {
+    console.log(label)
     console.log(item)
   }
 }
@@ -129,7 +130,7 @@ app.post('/stop', function(req, res) {
 app.post('/execute', async (req, res) => {
   try {
   
-    logger(req.body)
+    logger('req.body', req.body)
 
     if (Object.keys(req.body.inArguments[0]).length > 0) {
       console.log('preparing paylod...making request to url...')
@@ -142,7 +143,7 @@ app.post('/execute', async (req, res) => {
       // add contactKey, eventDate to payload
       payload.contactKey = contactKey
       payload.eventDate = eventDate
-      logger(payload)
+      console.log(payload)
       
       if (urlString && Object.keys(payload).length > 0) {
         reqOptions = {
@@ -158,7 +159,7 @@ app.post('/execute', async (req, res) => {
       }
 
       // not going to bother using 'await'...will slow down code waiting for response
-      axios(reqOptions) 
+      let response = await axios(reqOptions) 
     } else {
       return res.status(500).json({
         errorMessage: 'req.body.urlString did not exist'
