@@ -141,8 +141,8 @@ app.post('/execute', async (req, res) => {
       let eventDate = new Date().format('m-d-Y h:i:s'); 
 
       // add contactKey, eventDate to payload
-      payload.contactKey = contactKey
-      payload.eventDate = eventDate
+      // payload.contactKey = contactKey
+      // payload.eventDate = eventDate
       console.log(payload)
       
       if (urlString && Object.keys(payload).length > 0) {
