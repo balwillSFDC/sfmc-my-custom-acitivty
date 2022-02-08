@@ -79,9 +79,6 @@ function onInitActivity(payload) {
 
 }
 
-// function jsFriendlyJSONStringify (s) {
-//   return JSON.stringify(s).replace('\\', '')
-// }
 
 
 function prePopulateInput(inputFieldId, inputValue) {

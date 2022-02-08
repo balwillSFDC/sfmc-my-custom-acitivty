@@ -132,6 +132,7 @@ app.post('/execute', async (req, res) => {
     logger(req.body)
 
     if (Object.keys(req.body.inArguments[0]).length > 0) {
+      console.log('preparing paylod...making request to url...')
       let reqOptions; 
       let contactKey = req.body.keyValue
       let urlString = req.body.inArguments[0].urlString || ''
@@ -141,7 +142,7 @@ app.post('/execute', async (req, res) => {
       // add contactKey, eventDate to payload
       payload.contactKey = contactKey
       payload.eventDate = eventDate
-
+      logger(payload)
       
       if (urlString && Object.keys(payload).length > 0) {
         reqOptions = {
@@ -155,8 +156,6 @@ app.post('/execute', async (req, res) => {
           url: urlString,
         }
       }
-
-      logger(reqOptions)
 
       // not going to bother using 'await'...will slow down code waiting for response
       axios(reqOptions) 
