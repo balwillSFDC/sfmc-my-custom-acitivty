@@ -154,9 +154,12 @@ app.post('/execute', async (req, res) => {
           url: urlString,
         }
       }
+      
       logger('reqOptions: ', reqOptions)
+      
       // not going to bother using 'await'...will slow down code waiting for response
-      let response = await axios(reqOptions) 
+      axios(reqOptions) 
+      
     } else {
       return res.status(500).json({
         errorMessage: 'req.body.urlString did not exist'
