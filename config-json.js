@@ -34,9 +34,9 @@ module.exports = function configJSON(req) {
         // Key and Value pair for each field expected in the response body of the request
         outArguments: [],
         // The amount of time we want JB to wait before canceling the request. Default is 60000, Minimum is 1000
-        timeout: 10000,
+        timeout: 90000,
         // how many retries if the request failed with 5xx error or network error
-        retryCount: 3,
+        retryCount: 5,
         // wait in ms between retry
         retryDelay: 1000,
         // the number of concurrent requests JB will send all together
@@ -56,6 +56,11 @@ module.exports = function configJSON(req) {
       },
       stop: {
         url: `https://${req.headers.host}/stop`
+      }
+    },
+    userInterfaces: {
+      configModal: {
+        fullscreen: false
       }
     },
     // schema Object mirrors the activity configuration from the top level of the config.json file and specifies schema information about in and out arguments. Schema objects follow this pattern: 
