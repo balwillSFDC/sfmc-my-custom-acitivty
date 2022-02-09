@@ -59,9 +59,7 @@ module.exports = function configJSON(req) {
       }
     },
     userInterfaces: {
-      configModal: {
-        fullscreen: false
-      }
+      
     },
     // schema Object mirrors the activity configuration from the top level of the config.json file and specifies schema information about in and out arguments. Schema objects follow this pattern: 
     // ** 
