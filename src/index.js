@@ -79,8 +79,6 @@ function onInitActivity(payload) {
 
 }
 
-
-
 function prePopulateInput(inputFieldId, inputValue) {
   let inputField = document.getElementById(inputFieldId)
   inputField.value = inputValue
@@ -182,6 +180,7 @@ function setupExampleTestHarness() {
             contactKey: "{{Context.ContactKey}}",
             execute: {
                 inArguments: [
+                  // SAMPLE
                   // {
                   //   payload: { foo: "bar"}
                   // }

@@ -1,5 +1,5 @@
 # Salesforce Marketing Cloud Journey Builder - Custom Activity Example
-This repository aims to instruct beginners on how to create custom activities in Marketing Cloud. The Salesforce documentation offered on this subject is "limited" at best. This repository aims to provide additional instruction and guidance on how to build your own activities. The requirements for building your own custom JB activity are as follows: 
+This repository aims to instruct beginners on how to create custom activities in Marketing Cloud. The walkthrough guide can be found here: [https://balwillsfdc.github.io/sfmc-my-custom-acitivty/](https://balwillsfdc.github.io/sfmc-my-custom-acitivty/) The requirements for building your own custom JB activity are as follows: 
 - Javascript / Node.js knowledge
 - Marketing Cloud Journey Builder Expertise
 - Marketing Cloud Account

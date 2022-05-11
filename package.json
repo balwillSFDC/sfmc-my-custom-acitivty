@@ -27,6 +27,7 @@
     "config-json": "^1.0.0",
     "copy-webpack-plugin": "^10.2.4",
     "express": "^4.17.2",
+    "jekyll": "^3.0.0-beta1",
     "postmonger": "0.0.16"
   },
   "devDependencies": {
