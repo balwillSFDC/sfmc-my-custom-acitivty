@@ -1,6 +1,11 @@
 {
   "name": "Custom Activity",
-  "description": "A better Journey Builder Custom Activity example.",
+  "description": "A Marketing Cloud activity to send Post Messages to specified URLs",
   "repository": "https://github.com/balwillSFDC/sfmc-my-custom-acitivty",
-  "keywords": ["node", "express", "static"]
+  "keywords": ["node", "express", "static", "salesforce", "Marketing Cloud", "SFMC"],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ]
 }

@@ -1,18 +1,18 @@
 ---
 layout: default
-title: Project Structure
+title: Project Structure & Walkthrough
 has_children: true
 ---
 
 ## Project Structure
 The following is the recommended project structure. 
 
-* app.js
+* [app.js](./app.js.md)
 * [config.json](config.json.md)
 * [index.html](index.html)
-* dist
+* [dist](./dist/dist.md)
     * assets 
-    * main.js
+    * [main.js](./dist/main.js.md)
 * src
-    * index.js
+    * [index.js](./src/index.js.md)
 * .babelrc

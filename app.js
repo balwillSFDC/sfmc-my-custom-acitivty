@@ -1,7 +1,7 @@
 // ****************
 // *
 // * 
-// app.js (AKA config.JSON)
+// app.js 
 // *
 // SERVER SIDE IMPLEMENTATION
 // *
@@ -36,9 +36,6 @@ app.get('/', (req, res) => {
 app.get('/index.html', (req, res) => {
   return res.sendFile(path.join(__dirname, 'index.html'))
 })
-
-// app.post('/login', routes.login );
-// app.post('/logout', routes.logout );
 
 // setup config.json route
 app.get('/config.json', function(req, res) {

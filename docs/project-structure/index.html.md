@@ -1,13 +1,14 @@
 ---
 layout: default
 title: index.html
-parent: Project Structure
+parent: Project Structure & Walkthrough
 --- 
 
 # index.html
-[See the Code]()
-This is the html code for the custom activity. The user interface that's built for the custom activity is designed & built here. Below is the index.html for this project - It's a simple form built using the [Salesforce Lightning Design System](https://www.lightningdesignsystem.com/) with 3 form inputs
-  
+This is the html code for the custom activity - It's what's displayed to the User when they add the Custom Activity to their Journey's canvas. Below is the index.html for this project - It's a simple form built using the [Salesforce Lightning Design System](https://www.lightningdesignsystem.com/) with 3 form inputs. 
+
+Of course, you can get more creative than this and may build a custom activity with multiple html files (i.e. in the case of an activity with multiple steps). That's outside the scope of this walkthrough, which is why we'll use a simple form. 
+
 ```html
 <!DOCTYPE html>
 <html lang="en">

@@ -85,11 +85,11 @@ function prePopulateInput(inputFieldId, inputValue) {
 }
 
 function onDoneButtonClick() {
-  // we must set metaData.isConfigured in order to tell JB that this activity
-  // is ready for activation
   urlString = document.getElementById('url').value
   
   if (urlString.length > 0) {
+    // we must set metaData.isConfigured in order to tell JB that this activity
+    // is ready for activation
     activity.metaData.isConfigured = true; 
 
     payloadValue = document.getElementById('payload').value

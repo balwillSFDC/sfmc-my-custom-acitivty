@@ -21,7 +21,7 @@ module.exports = function configJSON(req) {
     lang: {
       'en-US': {
         name: 'Custom Code Activity',
-        description: 'Points to a code snippet hosted in Cloudpages to execute custom SSJS or AMPscript'
+        description: 'Makes a POST call with payload to a specific URL'
       }
     },
     // Contains information sent to the activity each time it executes. 

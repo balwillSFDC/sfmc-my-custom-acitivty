@@ -1,7 +1,7 @@
 ---
 layout: default
 title: config.json
-parent: Project Structure
+parent: Project Structure & Walkthrough
 --- 
 
 # Config.json
@@ -16,64 +16,66 @@ Next, we'll begin with the Config.json file for the project (found [here](https:
 
 _* Required_ 
 
+__NOTE__: This project's config.json file is actually a js file where we export data as json. So if you're wondering why the code doesn't exactly match json format or why the projects file is config-json.js, that's why!
+
 Below is the outline for the Config.json file - Let's take a closer look at each of these properties 🔎 and begin to fill in the values as they are in the project: 
-```json
+
+```js
 {
-    "workflowApiVersion": "1.1",
-    "metaData": {
-      "icon": "",
-      "category": ""
+    workflowApiVersion: "1.1",
+    metaData: {
+      icon: "",
+      category: ""
     },
-    "type": "",
-    "lang": {
-      "en-US": {
-        "name": "",
-        "description": ""
+    type: "",
+    lang: {
+      en-US: {
+        name: "",
+        description: ""
       }
     },
-    "arguments": {
-      "execute": {
-        "inArguments": [],
-        "outArguments": [],
-        "timeout": 90000,
-        "retryCount": 5,
-        "retryDelay": 1000,
-        "concurrentRequests": 5,
-        "url":"https://${req.headers.host}/execute",
+    arguments: {
+      execute: {
+        inArguments: [],
+        outArguments: [],
+        timeout: 90000,
+        retryCount: 5,
+        retryDelay: 1000,
+        concurrentRequests: 5,
+        url: `https://${req.headers.host}/execute`,
       },
     },
-    "configurationArguments": {
-      "save": {
-        "url": "https://${req.headers.host}/save"
+    configurationArguments: {
+      save: {
+        url: `https://${req.headers.host}/save`
       },
-      "publish": {
-        "url": "https://${req.headers.host}/publish"
+      publish: {
+        url: `https://${req.headers.host}/publish`
       },
-      "validate": {
-        "url": "https://${req.headers.host}/validate"
+      validate: {
+        url: `https://${req.headers.host}/validate`
       },
-      "stop": {
-        "url": "https://${req.headers.host}/stop"
+      stop: {
+        url: `https://${req.headers.host}/stop`
       }
     },
-    "schema": {
-      "arguments": {
-        "execute": {
-          "inArguments": [],
-          "outArguments": []
+    schema: {
+      arguments: {
+        execute: {
+          inArguments: [],
+          outArguments: []
         }
       }
     }
-  }
 }
 ```
 
 ## API Version & Metadata
-```json
-    "workflowApiVersion": "1.1",
-    "metaData": {
-      "icon": "images/apex_120.png",
-      "category": "custom"
+```js
+    workflowApiVersion: "1.1",
+    metaData: {
+      icon: "images/apex_120.png",
+      category: "custom"
     },
 ```
 
@@ -105,10 +107,10 @@ This is a string property that represents the type of activity. Most of the time
 
 ## Language
 ```json
-    "lang": {
+    lang: {
       "en-US": {
-        "name": "Custom Code Activity",
-        "description": "Makes a POST call with payload to a specific URL"
+        name: "Custom Code Activity",
+        description: "Makes a POST call with payload to a specific URL"
       }
     },
 ```
@@ -116,21 +118,20 @@ This is a string property that represents the type of activity. Most of the time
 Used to define the display name and description that appears for the Custom Activity. If you want to internationalize your activity (i.e. display the name in spanish when accessed by a spanish locale) then you would add use two-letter ISO 639-1 standard. So en-US for American english, pt-BR for Potuguese Brazilian. 
  
 ## Execution Arguments 
-```json
-    "arguments": {
-      "execute": {
-        "inArguments": [],
-        "outArguments": [],
-        "timeout": 90000,
-        "retryCount": 5,
-        "retryDelay": 1000,
-        "concurrentRequests": 5,
-        "url":"https://${req.headers.host}/execute",
+```js
+    arguments: {
+      execute: {
+        inArguments: [],
+        outArguments: [],
+        timeout: 90000,
+        retryCount: 5,
+        retryDelay: 1000,
+        concurrentRequests: 5,
+        url: `https://${req.headers.host}/execute`,
       },
     },
 ```
-
-
+__NOTE__: If you want to pass Contact data or data from a Data Extension in the ```inArguments``` or ```outArguments``` you can use [Data Binding](https://developer.salesforce.com/docs/marketing/marketing-cloud/guide/how-data-binding-works.html). For example, if you wanted to access a value from the Contact model, you can do ```Contact.Attribute.valueFromDataModel``` keep in mind if there are multiple levels of relationships to the Contact Key you will have to define those like so  ```Contact.Attribute.relationship1.relationship2.valueFromDataModel```.  
 
 ## Configuration Arguments
 These are the routes you're telling Journey builder to use for your activity.
@@ -138,19 +139,19 @@ These are the routes you're telling Journey builder to use for your activity.
 - */config.json* - called when Journey is being loaded on page. Journey Builder retrieves all custom activities while loading. The config.json file is expected to be returned 
 - */stop* - Called when journey version is being stopped. Journey Builder expects a 200 response (success)  
 
-```json
-    "configurationArguments": {
-      "save": {
-        "url": "https://${req.headers.host}/save"
+```js
+    configurationArguments: {
+      save: {
+        url: `https://${req.headers.host}/save`
       },
-      "publish": {
-        "url": "https://${req.headers.host}/publish"
+      publish: {
+        url: `https://${req.headers.host}/publish`
       },
-      "validate": {
-        "url": "https://${req.headers.host}/validate"
+      validate: {
+        url: `https://${req.headers.host}/validate`
       },
-      "stop": {
-        "url": "https://${req.headers.host}/stop"
+      stop: {
+        url: `https://${req.headers.host}/stop`
       }
     },
 ```
@@ -169,7 +170,7 @@ Taking a look at this projects [config.json](../../config-json.js) file, you may
 ## Payload Schema
 The ```schema``` property should mirror the activity configuration from the top level of the config.json file and specifies schema infromation about in and out arguments. Schema objects follow this pattern: 
 
-```javascript
+```json
 {
     "dataType": MC data type,
     "isNullable": Boolean,
