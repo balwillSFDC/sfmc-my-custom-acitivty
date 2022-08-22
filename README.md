@@ -7,3 +7,6 @@ This repository aims to instruct beginners on how to create custom activities in
 
 ## Deploy to Heroku
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?https://github.com/balwillSFDC/sfmc-my-custom-acitivty)
+
+# Notes
+- For additional examples/documentation on Salesforce Marketing Cloud Custom Activities check the [github](https://github.com/salesforce-marketingcloud/sfmc-example-jb-custom-activity) and [documentation](https://developer.salesforce.com/docs/marketing/marketing-cloud/guide/creating-activities.html)
