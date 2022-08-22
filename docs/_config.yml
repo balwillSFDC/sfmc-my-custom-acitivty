@@ -26,7 +26,6 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 github_username: balwillSFDC
 
 # Build settings
-theme: just-the-docs
 plugins:
   - jekyll-feed
 remote_theme: just-the-docs/just-the-docs
