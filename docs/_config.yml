@@ -18,15 +18,13 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: SFMC Custom Activity Walkthrough
-email: balwill@salesforce.com
+title: "SFMC Custom Activity Walkthrough"
+email: "balwill@salesforce.com"
 description: Marketing Cloud Custom Activity Tutorial documentation
 baseurl: "" 
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
-github_username: balwillSFDC
+github_username: "balwillSFDC"
 
 # Build settings
-plugins:
-  - jekyll-feed
-remote_theme: just-the-docs/just-the-docs
+remote_theme: "just-the-docs/just-the-docs"
 
