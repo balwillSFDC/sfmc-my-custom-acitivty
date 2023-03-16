@@ -143,12 +143,18 @@ app.post('/execute', async (req, res) => {
         reqOptions = {
           method: 'POST',
           url: urlString,
-          data: JSON.stringify(payload)
+          data: JSON.stringify(payload),
+          headers: {
+            CustomAccept: 'TestingHeaderValue'
+          }          
         }
       } else {
         reqOptions = {
           method: 'POST',
           url: urlString,
+          headers: {
+            CustomAccept: 'TestingHeaderValue'
+          }
         }
       }
       
