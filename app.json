@@ -1,7 +1,7 @@
 {
   "name": "Custom Activity",
   "description": "A Marketing Cloud activity to send Post Messages to specified URLs",
-  "repository": "https://github.com/balwillSFDC/sfmc-my-custom-acitivty",
+  "repository": "https://github.com/xfulton-salesforce/sfmc-my-custom-acitivty",
   "keywords": ["node", "express", "static", "salesforce", "Marketing Cloud", "SFMC"],
   "buildpacks": [
     {
