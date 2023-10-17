@@ -51,7 +51,7 @@ function onInitActivity(payload) {
   // Set the activity object from this payload. We'll refer to this object as we
   // modify it before saving.
   activity = payload; 
-  console.log(activity)
+  console.log('activity: ', activity)
 
   let inArguments; 
 
@@ -74,6 +74,7 @@ function onInitActivity(payload) {
   }
 
   console.log(payloadStringObj)
+
   if (payloadStringObj) {
     prePopulateInput('payload', JSON.stringify(payloadStringObj.payload, null, 4))
   }

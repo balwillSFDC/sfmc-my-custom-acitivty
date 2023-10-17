@@ -427,7 +427,7 @@ function onInitActivity(payload) {
   // Set the activity object from this payload. We'll refer to this object as we
   // modify it before saving.
   activity = payload; 
-  console.log(activity)
+  console.log('activity: ', activity)
 
   let inArguments; 
 
@@ -449,16 +449,13 @@ function onInitActivity(payload) {
     prePopulateInput('url', urlStringObj.urlString)
   }
 
+  console.log(payloadStringObj)
+
   if (payloadStringObj) {
     prePopulateInput('payload', JSON.stringify(payloadStringObj.payload, null, 4))
   }
 
 }
-
-// function jsFriendlyJSONStringify (s) {
-//   return JSON.stringify(s).replace('\\', '')
-// }
-
 
 function prePopulateInput(inputFieldId, inputValue) {
   let inputField = document.getElementById(inputFieldId)
@@ -466,23 +463,26 @@ function prePopulateInput(inputFieldId, inputValue) {
 }
 
 function onDoneButtonClick() {
-  // we must set metaData.isConfigured in order to tell JB that this activity
-  // is ready for activation
   urlString = document.getElementById('url').value
   
   if (urlString.length > 0) {
+    // we must set metaData.isConfigured in order to tell JB that this activity
+    // is ready for activation
     activity.metaData.isConfigured = true; 
 
     payloadValue = document.getElementById('payload').value
 
     if (payloadValue) {
-      try {
-        payload = JSON.parse(payloadValue)
-      } catch {
-        document.getElementById('payload-field').classList.add('slds-has-error')
-        document.getElementById('form-error-payload').style.display = null
+      // THE CODE BELOW DOESN'T ALLOW FOR DATA BINDING
+      // try {
+      //   payload = JSON.parse(payloadValue)
+      // } catch {
+      //   document.getElementById('payload-field').classList.add('slds-has-error')
+      //   document.getElementById('form-error-payload').style.display = null
 
-      }
+      // }
+      
+      payload = JSON.parse(payloadValue)
       
       activity.arguments.execute.inArguments = [ {urlString, payload } ]  
     } else {
@@ -561,6 +561,7 @@ function setupExampleTestHarness() {
             contactKey: "{{Context.ContactKey}}",
             execute: {
                 inArguments: [
+                  // SAMPLE
                   // {
                   //   payload: { foo: "bar"}
                   // }
