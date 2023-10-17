@@ -106,8 +106,7 @@ function onDoneButtonClick() {
 
       // }
       
-      // payload = JSON.parse(payloadValue)
-      let payload = payloadValue
+      let payload = JSON.parse(payloadValue)
       
       activity.arguments.execute.inArguments = [ {urlString, payload } ]  
     } else {
