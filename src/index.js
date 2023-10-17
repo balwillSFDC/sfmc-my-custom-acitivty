@@ -95,13 +95,16 @@ function onDoneButtonClick() {
     payloadValue = document.getElementById('payload').value
 
     if (payloadValue) {
-      try {
-        payload = JSON.parse(payloadValue)
-      } catch {
-        document.getElementById('payload-field').classList.add('slds-has-error')
-        document.getElementById('form-error-payload').style.display = null
+      // THE CODE BELOW DOESN'T ALLOW FOR DATA BINDING
+      // try {
+      //   payload = JSON.parse(payloadValue)
+      // } catch {
+      //   document.getElementById('payload-field').classList.add('slds-has-error')
+      //   document.getElementById('form-error-payload').style.display = null
 
-      }
+      // }
+      
+      payload = JSON.parse(payloadValue)
       
       activity.arguments.execute.inArguments = [ {urlString, payload } ]  
     } else {
