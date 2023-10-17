@@ -73,6 +73,7 @@ function onInitActivity(payload) {
     prePopulateInput('url', urlStringObj.urlString)
   }
 
+  console.log(payloadStringObj)
   if (payloadStringObj) {
     prePopulateInput('payload', JSON.stringify(payloadStringObj.payload, null, 4))
   }
