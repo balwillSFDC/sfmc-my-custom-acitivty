@@ -16,4 +16,4 @@ When testing locally, you are not able to interact with journey builder as you w
 
 In any case, a "mock" jb object ```jb``` is setup in the code so if you run locally, you can open the browser console and run ```jb.ready()```. This will instantiate the jb object. After doing so, if you populate the fields, you can run ```jb.save()``` and you'll see what the save payload looks like.
 
-When making updates to the ```src/index.js``` file, be sure to run ```npm run build``` to compile the file
+When making updates to the ```src/index.js``` file, be sure to run ```npm run build``` to compile the file 
